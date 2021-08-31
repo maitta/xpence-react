@@ -1,5 +1,6 @@
 import Article from './Article';
-
+import Summary from './Summary';
+import {SummaryType} from '../Services/enum.js';
 
 
 function App() {
@@ -16,11 +17,6 @@ function App() {
     );
   }
 
-  function getTotal(){
-    const total = testData.reduce((x, y) => x + y.price, 0);
-    return total;
-  }
-
   return (
     <div>
       <div class="header-title"><label>Dashboard</label></div>
@@ -29,14 +25,11 @@ function App() {
         <div id="divMain">
           {getElements()}
         </div>
-        <div class="div-aggregate">
-          <label>Total:</label>
-          <span id="spnTotal">{getTotal()}</span>
-        </div>
-        <div class="div-aggregate">
-          <label>Percentage:</label>
-          <span id="spnPercent"></span>
-        </div>
+        
+        <Summary testData={testData} type={SummaryType.SUBTOTAL}/>
+        <Summary testData={testData} type={SummaryType.PERCENTAGE}/>
+        <Summary testData={testData} type={SummaryType.TOTAL}/>
+        
         <div class="button-region">
           <div>
             <a class="button" href="new.html">New</a>

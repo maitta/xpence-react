@@ -87,7 +87,7 @@ hr{
   border-radius: 5px;
 }
 
-#spnTotal, #spnPercent{
+.totals{
   float:right;
   font-weight: bold;
 }
