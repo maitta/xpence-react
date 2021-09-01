@@ -1,9 +1,15 @@
+import React, {useState} from 'react';
 import Article from './Article';
 import Summary from './Summary';
-import {SummaryType} from '../Services/enum.js';
+import {SummaryType, ButtonType} from '../Services/Enum.js';
+import Button from './Button.js';
+import Add from './Add.js';
+import New from './New.js';
 
 
 function App() {
+
+  const [isVisible, setVisible] = useState(false);
 
   const testData = [
     {id: 1, name: 'item1', price: 2.5},
@@ -31,12 +37,15 @@ function App() {
         <Summary testData={testData} type={SummaryType.TOTAL}/>
         
         <div class="button-region">
-          <div>
-            <a class="button" href="new.html">New</a>
-          </div>
-          <div class="button-right">
-            <a class="button" href="config.html">Config</a>
-          </div>
+          <Button text={ButtonType.ADD} callback={() => {
+            setVisible(!isVisible);
+            console.log(isVisible);
+          }}/>
+          <Button text={ButtonType.NEW} callback={() => setVisible(!isVisible)}/>
+        </div>
+        <div class={isVisible ? '' : 'invisible'}>
+          <Add callback={() => setVisible(!isVisible)} />
+          <New callback={() => setVisible(!isVisible)} />
         </div>
       </div>
     </div>

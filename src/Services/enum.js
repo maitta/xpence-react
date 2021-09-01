@@ -4,6 +4,11 @@ const SummaryType = {
     TOTAL: "Total"
 }
 
+const ButtonType = {
+    ADD: "add",
+    NEW: "new"
+}
+
 // More enums come here
 
-export {SummaryType};
+export {SummaryType, ButtonType};

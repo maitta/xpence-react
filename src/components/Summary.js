@@ -1,4 +1,4 @@
-import {SummaryType} from '../Services/enum.js';
+import {SummaryType} from '../Services/Enum.js';
 
 function Summary(props){
 
