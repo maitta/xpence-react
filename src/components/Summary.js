@@ -35,9 +35,9 @@ function Summary(props){
     }
 
     return(
-        <div class="div-aggregate">
+        <div className="div-aggregate">
           <label>{props.type}</label>
-          <span class="totals">{calculate()}</span>
+          <span className="totals">{calculate()}</span>
         </div>
     );
 }

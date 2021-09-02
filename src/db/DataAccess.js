@@ -8,19 +8,19 @@ const DataAccess = (function(){
 
 	function initDb(){
 		//db name, version, comment, size (10MB)
-		var db = openDatabase('xpenceDB', '0.1', 'xpence tracker database', 10 * 1024 * 1024);	
+		const db = openDatabase('xpenceDB', '0.1', 'xpence tracker database', 10 * 1024 * 1024);	
 		db.transaction(function(tx){
 			tx.executeSql("CREATE TABLE IF NOT EXISTS Article (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, " + 
 				"price REAL, comment TEXT, createdOn TEXT)");
 			tx.executeSql("CREATE TABLE IF NOT EXISTS Consumption (id INTEGER PRIMARY KEY AUTOINCREMENT, articleId INTEGER, " + 
-				"quantity INTEGER, comment TEXT, createdOn TEXT, FOREIGN KEY (articleId) REFERENCES Item (id))");			
+				"quantity INTEGER, comment TEXT, createdOn TEXT, FOREIGN KEY (articleId) REFERENCES Article (id))");			
 		});	
 
 		return db;
 	};
 
 	//public methods are added to the dataAccess object	
-	dataAccess.insertItemToDb = function(name, price, comment){
+	dataAccess.insertArticlesToDb = function(name, price, comment){
 		//write value to db
 		db.transaction(function(tx){
 			var insert = "INSERT INTO Article (name, price, comment, createdOn) VALUES(?,?,?,?)";
@@ -30,7 +30,7 @@ const DataAccess = (function(){
 	};
 
 	//Async method needs a success callback function to perform computation on the result set.
-	dataAccess.getAllItemsFromDb = function(renderFunc){
+	dataAccess.getAllArticlesFromDb = function(renderFunc){
 		//read value form db
 		db.transaction(function(tx){
 			tx.executeSql('SELECT id, name, price, comment FROM Article', [], renderFunc);
@@ -41,14 +41,14 @@ const DataAccess = (function(){
 	dataAccess.getAllConsumptionsFromDb = function(renderFunc){		
 		db.transaction(function(tx){
 			var innerJoin = "SELECT c.id as id, i.name as name, i.price as price FROM " +
-								"Consumption c INNER JOIN Item i ON c.articleId = i.id";
+								"Consumption c INNER JOIN Article i ON c.articleId = i.id";
 			tx.executeSql(innerJoin, [], renderFunc);
 		});
 	};
 
 	dataAccess.getTotal = function(renderFunc){
 		db.transaction(function(tx){
-			var query = "SELECT SUM(i.price) as total FROM Consumption c INNER JOIN Item i ON c.articleId = i.id";
+			var query = "SELECT SUM(i.price) as total FROM Consumption c INNER JOIN Article i ON c.articleId = i.id";
 			tx.executeSql(query, [], renderFunc);
 		});
 	};
@@ -63,10 +63,10 @@ const DataAccess = (function(){
 	};
 
 	//test only!
-	dataAccess.resetItems = function(){
+	dataAccess.resetArticles = function(){
 		db.transaction(function(tx){
 			tx.executeSql("DROP TABLE Article", function() {
-			      alert("Item table has been dropped."); 
+			      alert("Article table has been dropped."); 
 			});
 		});
 	};

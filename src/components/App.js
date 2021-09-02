@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import Article from './Article';
-import Summary from './Summary';
+import Consumption from './Consumption.js';
+import Summary from './Summary.js';
 import {SummaryType, ButtonType} from '../Services/Enum.js';
 import Button from './Button.js';
 import Add from './Add.js';
@@ -19,15 +19,15 @@ function App() {
 
   function getElements(){
     return testData.map(x => 
-      <Article id={x.id} name={x.name} price={x.price} />
+      <Consumption key={x.id} id={x.id} name={x.name} price={x.price} />
     );
   }
 
   return (
     <div>
-      <div class="header-title"><label>Dashboard</label></div>
+      <div className="header-title"><label>Dashboard</label></div>
       <hr/>
-      <div class="main">
+      <div className="main">
         <div id="divMain">
           {getElements()}
         </div>
@@ -36,14 +36,14 @@ function App() {
         <Summary testData={testData} type={SummaryType.PERCENTAGE}/>
         <Summary testData={testData} type={SummaryType.TOTAL}/>
         
-        <div class="button-region">
+        <div className="button-region">
           <Button text={ButtonType.ADD} callback={() => {
             setVisible(!isVisible);
             console.log(isVisible);
           }}/>
           <Button text={ButtonType.NEW} callback={() => setVisible(!isVisible)}/>
         </div>
-        <div class={isVisible ? '' : 'invisible'}>
+        <div className={isVisible ? '' : 'invisible'}>
           <Add callback={() => setVisible(!isVisible)} />
           <New callback={() => setVisible(!isVisible)} />
         </div>

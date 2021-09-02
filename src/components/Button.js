@@ -14,7 +14,7 @@ function Button(props){
 
     return(
         <div>
-            <a class={getCss()} onClick={props.callback}>{props.text}</a>
+            <button className={getCss()} onClick={props.callback}>{props.text}</button>
         </div>
     );
 }

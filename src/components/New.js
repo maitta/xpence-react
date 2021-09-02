@@ -41,30 +41,30 @@ function New(props){
     }
 
     return(
-        <form role="form" class="main">
-            <div class="header-title"><label>Insert Article</label></div>                    
-            <div class="form-group">
-                <label for="txtItem">Name:</label>
-                <input class="form-control" id="txtItem" type="textbox" class="text-box" 
-                    value={name} onChange={handleNameChange} maxlength="50"/>
+        <form className="main">
+            <div className="header-title"><label>Insert Article</label></div>                    
+            <div className="form-group">
+                <label htmlFor="txtItem">Name:</label>
+                <input id="txtItem" type="textbox" className="form-control text-box" 
+                    value={name} onChange={handleNameChange} maxLength="50"/>
             </div>
-            <div class="form-group">
-                <label for="txtPrice">Price:</label>
-                <input class="form-control" id="txtPrice" type="textbox" class="price-box"
+            <div className="form-group">
+                <label htmlFor="txtPrice">Price:</label>
+                <input id="txtPrice" className="form-control price-box"
                     value={price} onChange={handlePriceChange} type="number" min="5"/>
             </div>
-            <div class="form-group">
-                <label for="txtComment">Comment:</label>
-                <textarea class="form-control" id="txtComment" type="textbox" class="text-box"
+            <div className="form-group">
+                <label htmlFor="txtComment">Comment:</label>
+                <textarea id="txtComment" type="textbox" className="form-control text-box"
                     value={comment} onChange={handleCommentChange}></textarea>
             </div>
-            <div class="button-region">
+            <div className="button-region">
                 <div>
-                    <input class={"button " + (!isInputOk() ? "disabled" : '')} id="btnSubmit" type="button"
-                    value="Insert" onClick={handleInsert} maxlength="250"/>
+                    <input className={"button " + (!isInputOk() ? "disabled" : '')} id="btnSubmit" 
+                    type="button"  value="Insert" onClick={handleInsert} maxLength="250"/>
                 </div>
-                <div class="button-right">
-                    <a class="button" onClick={props.callback}>Back</a>
+                <div className="button-right">
+                    <button className="button" onClick={props.callback}>Back</button>
                 </div>
             </div>
         </form>
