@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
-import db from '../db/DataAccess.js';
 
 function ArticleRow(props){
+
+    function handleClick(id){
+        console.log(props.id)
+        console.log(props.selected)
+        props.updateSelected(id);        
+    }
     return(
-        <tr>
+        <tr className={props.selected === props.id ? "selected" : ""} onClick={() => handleClick(props.id)}>
             <td>{props.name}</td>
             <td>{props.comment}</td>
             <td>{props.price}</td>

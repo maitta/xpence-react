@@ -10,8 +10,8 @@ function New(props){
 
     function handleInsert(e){
         e.preventDefault();
-        if(canValidate()){
-            db.insertItemToDb(name, price, comment);
+        if(isInputOk()){
+            db.insertArticleToDb(name, price, comment);
             updateName('');
             updatePrice('');
             updateComment('');
@@ -19,10 +19,6 @@ function New(props){
         else{
             updateShowWarnings(!showWarnings);
         }   
-    }
-
-    function canValidate(){
-        // TODO
     }
 
     function isInputOk(){

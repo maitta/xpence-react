@@ -6,6 +6,7 @@ function Add(props){
 
     const [articles, updateArticles] = useState([]);
     const [articleRows, updateArticleRows] = useState();
+    const [selected, updateSelected] = useState();
 
     useEffect(() => {
         db.getAllArticlesFromDb((tx, result) => {                           
@@ -21,9 +22,18 @@ function Add(props){
     useEffect(() => {
         console.debug(articles);
         updateArticleRows(articles.map(x =>
-            <ArticleRow name={x.name} comment={x.comment} price={x.price} />
+            <ArticleRow key={x.id} id={x.id} name={x.name} comment={x.comment} price={x.price} 
+                updateSelected={updateSelected} selected={selected}/>
         ));
-    }, [articles]);
+    }, [articles, selected]);
+
+    function handleClick(){
+        db.insertConsumptionToDb(selected);
+    }
+
+    function isDisabled(){
+        if(selected === undefined) return true;
+    }
 
     return(
         <div>
@@ -43,7 +53,8 @@ function Add(props){
                 <br/>
                 <div className="button-region">
                     <div>
-                        <input className="button disabled" id="btnSiss" type="button" disabled value="Sissamen!"/>
+                        <input className={"button " + (isDisabled() ? "disabled" : '')} id="btnSiss" type="button" 
+                        disabled={isDisabled()} value="Sissamen!" onClick={handleClick}/>
                     </div>
                     <div className="button-right">
                         <button className="button" onClick={props.callback} >Back</button>

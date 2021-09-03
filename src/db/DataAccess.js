@@ -20,13 +20,13 @@ const DataAccess = (function(){
 	};
 
 	//public methods are added to the dataAccess object	
-	dataAccess.insertArticlesToDb = function(name, price, comment){
+	dataAccess.insertArticleToDb = function(name, price, comment){
 		//write value to db
 		db.transaction(function(tx){
 			var insert = "INSERT INTO Article (name, price, comment, createdOn) VALUES(?,?,?,?)";
 			tx.executeSql(insert, [name, price, comment, utility.getDate()]);
-		});		
-		console.log('New article inserted. name: ' + name + ' price: ' + price);
+			console.log('New article inserted. name: ' + name + ' price: ' + price);
+		}, (e) => console.log('ERROR: ' + e.message));		
 	};
 
 	//Async method needs a success callback function to perform computation on the result set.
@@ -57,9 +57,10 @@ const DataAccess = (function(){
 	dataAccess.insertConsumptionToDb = function(articleId){
 		db.transaction(function (tx) {  
 			var insert = "INSERT INTO Consumption (articleId, quantity, createdOn) VALUES(?,?,?)";
-			tx.executeSql(insert, [articleId, 1, utility.getDate()]);			
-		});	
-		console.log('Article added. articleId: ' + articleId);
+			tx.executeSql(insert, 
+				[articleId, 1, utility.getDate()]);
+			console.log('Consumption added. articleId: ' + articleId);	
+		}, (e) => console.log('ERROR: ' + e.message));		
 	};
 
 	//test only!
