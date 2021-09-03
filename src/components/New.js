@@ -1,12 +1,29 @@
 import { useState } from 'react';
 import db from '../db/DataAccess.js';
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useHistory,
+    useLocation,
+    useParams
+  } from "react-router-dom";
+
 function New(props){
 
     const [name, updateName] = useState('');
     const [price, updatePrice] = useState('');
     const [comment, updateComment] = useState('');
     const [showWarnings, updateShowWarnings] = useState('');
+
+    let history = useHistory();    
+    let back = e => {
+        e.stopPropagation();
+        //history.goBack(); it bounces back to '/new?'
+        history.push("/");
+    };
 
     function handleInsert(e){
         e.preventDefault();
@@ -60,7 +77,7 @@ function New(props){
                     type="button"  value="Insert" onClick={handleInsert} maxLength="250"/>
                 </div>
                 <div className="button-right">
-                    <button className="button" onClick={props.callback}>Back</button>
+                    <button className="button" onClick={back}>Back</button>
                 </div>
             </div>
         </form>

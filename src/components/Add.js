@@ -2,11 +2,27 @@ import React, {useState, useEffect} from 'react';
 import ArticleRow from './ArticleRow.js';
 import db from '../db/DataAccess.js';
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useHistory,
+    useLocation,
+    useParams
+  } from "react-router-dom";
+
 function Add(props){
 
     const [articles, updateArticles] = useState([]);
     const [articleRows, updateArticleRows] = useState();
     const [selected, updateSelected] = useState();
+
+    let history = useHistory();    
+    let back = e => {
+        e.stopPropagation();
+        history.goBack();
+    };
 
     useEffect(() => {
         db.getAllArticlesFromDb((tx, result) => {                           
@@ -57,7 +73,7 @@ function Add(props){
                         disabled={isDisabled()} value="Sissamen!" onClick={handleClick}/>
                     </div>
                     <div className="button-right">
-                        <button className="button" onClick={props.callback} >Back</button>
+                        <button className="button" onClick={back}>Back</button>
                     </div>
                 </div>
             </div>

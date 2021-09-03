@@ -3,9 +3,17 @@ import Consumption from './Consumption.js';
 import Summary from './Summary.js';
 import {SummaryType, ButtonType} from '../services/Enum.js';
 import Button from './Button.js';
-import Add from './Add.js';
-import New from './New.js';
 import db from '../db/DataAccess.js';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+  useLocation,
+  useParams
+} from "react-router-dom";
 
 function App() {
 
@@ -40,15 +48,12 @@ function App() {
         <Summary data={consumptions} type={SummaryType.TOTAL}/>
         
         <div className="button-region">
-          <Button text={ButtonType.ADD} callback={() => {
-            setVisible(!isVisible);
-            console.log(isVisible);
-          }}/>
-          <Button text={ButtonType.NEW} callback={() => setVisible(!isVisible)}/>
-        </div>
-        <div className={isVisible ? '' : 'invisible'}>
-          <Add callback={() => setVisible(!isVisible)} />
-          <New callback={() => setVisible(!isVisible)} />
+          <Link to="/add">
+            <Button text={ButtonType.ADD} />
+          </Link>
+          <Link to="/new">
+            <Button text={ButtonType.NEW} />
+          </Link>          
         </div>
       </div>
     </div>
