@@ -1,4 +1,4 @@
-import utility from '../Services/Utility'
+import utility from '../services/Utility'
 
 const DataAccess = (function(){
 	

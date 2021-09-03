@@ -1,4 +1,4 @@
-import {SummaryType} from '../Services/Enum.js';
+import {SummaryType} from '../services/Enum.js';
 
 function Summary(props){
 
@@ -23,7 +23,7 @@ function Summary(props){
     }
 
     function getSubTotal(){
-        return props.testData.reduce((x, y) => x + y.price, 0);
+        if(props.data) return props.data.reduce((x, y) => (x + y.price), 0).toFixed(3);
     }
 
     function getTotal(){        

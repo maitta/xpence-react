@@ -1,4 +1,4 @@
-import {ButtonType} from  '../Services/Enum.js';
+import {ButtonType} from  '../services/Enum.js';
 
 function Button(props){
 
