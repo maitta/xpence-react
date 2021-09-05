@@ -186,3 +186,24 @@ tr:nth-child(odd) {
 .invalid{
   color: red;
 }
+
+/*grid styles*/
+.gridjs-search-input{
+  width: 100% !important;
+  margin-bottom: 15px;
+  min-height: 30px;
+  font-family: arial, tahoma, verdana;
+}
+
+.gridjs-pages button{
+  padding: 5px;
+  background: #990000;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+  border-width: 0px;
+  cursor: pointer;
+  margin-right: 5px;
+}

@@ -5,20 +5,17 @@ import {SummaryType, ButtonType} from '../services/Enum.js';
 import Button from './Button.js';
 import db from '../db/DataAccess.js';
 
+import { Grid } from 'gridjs-react';
+
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  useLocation,
-  useParams
+  Link
 } from "react-router-dom";
 
 function App() {
 
   const [isVisible, setVisible] = useState(false);
-  const [consumptions, updateConsumptions] = useState();
+  const [consumptions, updateConsumptions] = useState([]);
   const [consTable, updateConsTable] = useState();
 
   useEffect(() => {
@@ -40,7 +37,16 @@ function App() {
       <hr/>
       <div className="main">
         <div id="divMain">
-          {consTable}
+          {/*consTable will use grid library with pagination and sorting instead of custom jsx*/}
+          <Grid
+            data={consumptions}
+            search={true}
+            sort={true}
+            columns={[{name: 'Id', hidden: true}, 'Name', 'Price']}
+            pagination={{
+              limit: 5,
+            }}
+          />
         </div>
         
         <Summary data={consumptions} type={SummaryType.SUBTOTAL}/>
