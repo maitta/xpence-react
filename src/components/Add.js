@@ -1,16 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ArticleRow from './ArticleRow.js';
 import db from '../db/DataAccess.js';
-
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useHistory,
-    useLocation,
-    useParams
-  } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 function Add(props){
 

@@ -1,5 +1,3 @@
-import React, {useState} from 'react';
-
 function ArticleRow(props){
 
     function handleClick(id){

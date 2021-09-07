@@ -1,22 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import Consumption from './Consumption.js';
+//Using grid.js by now import Consumption from './Consumption.js';
 import Summary from './Summary.js';
 import {SummaryType, ButtonType} from '../services/Enum.js';
 import Button from './Button.js';
 import db from '../db/DataAccess.js';
-
 import { Grid } from 'gridjs-react';
-
-import {
-  BrowserRouter as Router,
-  Link
-} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function App() {
 
-  const [isVisible, setVisible] = useState(false);
   const [consumptions, updateConsumptions] = useState([]);
-  const [consTable, updateConsTable] = useState();
+  //Using grid.js by now const [consTable, updateConsTable] = useState();
 
   useEffect(() => {
     db.getAllConsumptionsFromDb((tx, result) => {
@@ -26,7 +20,7 @@ function App() {
         console.debug(JSON.stringify(result.rows[i]));      
       }
       updateConsumptions(cons);
-      updateConsTable(cons.map(x => <Consumption key={x.id} id={x.id} name={x.name} price={x.price} />))
+      //Using grid.js by now updateConsTable(cons.map(x => <Consumption key={x.id} id={x.id} name={x.name} price={x.price} />))
     }); 
   }, []);
 

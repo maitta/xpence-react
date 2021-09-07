@@ -1,15 +1,6 @@
 import { useState } from 'react';
 import db from '../db/DataAccess.js';
-
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useHistory,
-    useLocation,
-    useParams
-  } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 function New(props){
 
