@@ -122,12 +122,12 @@ hr{
 }
 
 .text-box{
-width:350px;
+  width:550px;
   height:25px;
 }
 
 .price-box{
-width:50px;
+  width:100px;
   height:25px;
 }
 
@@ -170,10 +170,6 @@ tr:nth-child(odd) {
   background: #fff7e6
 }
 
-#tblItems{
-
-}
-
 .selected {
   background-color: #003333 !important;
   color: #FFF !important;
@@ -206,4 +202,15 @@ tr:nth-child(odd) {
   border-width: 0px;
   cursor: pointer;
   margin-right: 5px;
+}
+
+.form-group{
+  padding: 5px;
+  display:flex; 
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-group label{
+  min-width: 95px;
 }

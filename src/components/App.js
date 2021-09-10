@@ -7,13 +7,13 @@ import db from '../db/DataAccess.js';
 import { Grid } from 'gridjs-react';
 import {Link} from "react-router-dom";
 
-function App() {
+function App(props) {
 
   const [consumptions, updateConsumptions] = useState([]);
   //Using grid.js by now const [consTable, updateConsTable] = useState();
 
   useEffect(() => {
-    db.getAllConsumptionsFromDb((tx, result) => {
+    db().getAllConsumptionsFromDb((tx, result) => {
       const cons = [];
       for(let i = 0; i < result.rows.length; i++){
         cons.push(result.rows[i]);
@@ -32,7 +32,7 @@ function App() {
       <div className="main">
         <div id="divMain">
           {/*consTable will use grid library with pagination and sorting instead of custom jsx*/}
-          <Grid
+          {<Grid
             data={consumptions}
             search={true}
             sort={true}
@@ -40,7 +40,7 @@ function App() {
             pagination={{
               limit: 5,
             }}
-          />
+          />}
         </div>
         
         <Summary data={consumptions} type={SummaryType.SUBTOTAL}/>

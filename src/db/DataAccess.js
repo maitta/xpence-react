@@ -1,12 +1,10 @@
 import utility from '../services/Utility'
 
-const DataAccess = (function(){
+const DataAccess = function(){
 	
 	const dataAccess = {};
     
-    const db = initDb();
-
-	function initDb(){
+    const db = (function initDb(){
 		//db name, version, comment, size (10MB)
 		const db = openDatabase('xpenceDB', '0.1', 'xpence tracker database', 10 * 1024 * 1024);	
 		db.transaction(function(tx){
@@ -14,10 +12,9 @@ const DataAccess = (function(){
 				"price REAL, comment TEXT, createdOn TEXT)");
 			tx.executeSql("CREATE TABLE IF NOT EXISTS Consumption (id INTEGER PRIMARY KEY AUTOINCREMENT, articleId INTEGER, " + 
 				"quantity INTEGER, comment TEXT, createdOn TEXT, FOREIGN KEY (articleId) REFERENCES Article (id))");			
-		});	
-
+		});
 		return db;
-	};
+	})();
 
 	//public methods are added to the dataAccess object	
 	dataAccess.insertArticleToDb = function(name, price, comment){
@@ -73,6 +70,6 @@ const DataAccess = (function(){
 	};
 
 	return dataAccess;
-})();
+};
 
 export default DataAccess;

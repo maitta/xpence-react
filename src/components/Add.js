@@ -16,7 +16,7 @@ function Add(props){
     };
 
     useEffect(() => {
-        db.getAllArticlesFromDb((tx, result) => {                           
+        db().getAllArticlesFromDb((tx, result) => {                           
             const articleCol = [];           
             const res = result.rows;
             for (var i=0; i < res.length; i++) {
@@ -61,7 +61,7 @@ function Add(props){
                 <div className="button-region">
                     <div>
                         <input className={"button " + (isDisabled() ? "disabled" : '')} id="btnSiss" type="button" 
-                        disabled={isDisabled()} value="Sissamen!" onClick={handleClick}/>
+                        disabled={isDisabled()} value="Consume" onClick={handleClick}/>
                     </div>
                     <div className="button-right">
                         <button className="button" onClick={back}>Back</button>

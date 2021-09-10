@@ -1,3 +1,4 @@
+import React from 'react';
 import App from './App';
 import Add from './Add.js';
 import New from './New.js';
