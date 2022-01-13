@@ -35,7 +35,7 @@ function Add(props){
     }, [articles, selected]);
 
     function handleClick(){
-        db.insertConsumptionToDb(selected);
+        db().insertConsumptionToDb(selected);
     }
 
     function isDisabled(){

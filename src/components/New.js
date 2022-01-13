@@ -19,7 +19,7 @@ function New(props){
     function handleInsert(e){
         e.preventDefault();
         if(isInputOk()){
-            db.insertArticleToDb(name, price, comment);
+            db().insertArticleToDb(name, price, comment);
             updateName('');
             updatePrice('');
             updateComment('');
