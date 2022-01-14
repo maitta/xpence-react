@@ -1,5 +1,8 @@
 import utility from '../services/Utility'
 
+// It does not self execute anymore because when importing in unit tests it would automatically try to access the WebSQL API 
+// which is not supported by jest and every test would fail. 
+// OTOH any access to DataAccess needs to be done after a call like this db().insertArticleToDb(...)
 const DataAccess = function(){
 	
 	const dataAccess = {};

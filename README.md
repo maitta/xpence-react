@@ -1,6 +1,7 @@
 # xPence tracker
 
-Current compatibility of WebSQL, which is used for persistency, can be found here https://caniuse.com/sql-storage.
+React port of simple vanilla JS app for adding expenses to a list which is stored in a WebSQL db.
+Current compatibility of WebSQL can be found here https://caniuse.com/sql-storage.
 
 ## Available Scripts
 

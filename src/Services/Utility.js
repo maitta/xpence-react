@@ -3,15 +3,14 @@ const Utility = (function(){
 	const utility = {};
     
 	utility.getDate = function(){
-		var today = new Date();
+		let today = new Date();
 
-		var dd = today.getDate();
+		let dd = today.getDate();
 		//January is 0!
-		var mm = today.getMonth() + 1; 
-		var yyyy = today.getFullYear();
+		let mm = today.getMonth() + 1; 
+		let yyyy = today.getFullYear();
 
-		today = dd + '/' + mm + '/' + yyyy;
-		return today;
+		return dd + '/' + mm + '/' + yyyy;
 	};
 
 	return utility;
