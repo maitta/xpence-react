@@ -1,4 +1,4 @@
-# xPence tracker
+# xPence react
 
 React port of simple vanilla JS app for adding expenses to a list which is stored in a WebSQL db.
 Current compatibility of WebSQL can be found here https://caniuse.com/sql-storage.
